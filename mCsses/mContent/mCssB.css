@@ -1,0 +1,14 @@
+.verticle-mode{
+writing-mode:tb-rl;
+-webkit-writing-mode:vertical-rl;
+writing-mode:vertical-rl;
+line-height:36pt;
+letter-spacing:0.3em;
+}
+.mImgAbsolute {
+	position:fixed;
+	right:0; 
+	bottom:-20; 	
+}
+
+

@@ -1,0 +1,43 @@
+.mFontSizeBColor {
+	font-family: Verdana, Georgia, Times, TimesNR, "New Century Schoolbook", "New York", serif;
+	font-weight:bold;
+	font-size:60px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	color:yellow;
+}
+.mFontSizeMColor {
+	font-family: Verdana, Georgia, Times, TimesNR, "New Century Schoolbook", "New York", serif;
+	font-weight:bold;
+	font-size:30px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	color:yellow;
+}
+.mFontSizeSColor {
+	font-family: Verdana, Georgia, Times, TimesNR, "New Century Schoolbook", "New York", serif;
+	font-weight:bold;
+	font-size:15px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	color:yellow;
+}
+.mImgFloatL {
+	float: left;
+}
+.mImgFloatR {
+	float: right;
+}
+.mImgAbsolute {
+	position:fixed;
+	right:0; 
+	bottom:-20; 	
+}
+.mDivFixed {
+	position:fixed;
+}
+
+
