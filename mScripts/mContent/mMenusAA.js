@@ -1,7 +1,12 @@
 ﻿function mAdd(mMenus){
-mMenus.addNode("MOST RECENT:   Chinese Literature","../../mHtmls/mContent/SUNJYS0WY1220R0OQSS10233Z141YYNV1Q0.html")
+mMenus.addNode("MOST RECENT:   Chinese Literature","../../mHtmls/mContent/SUNJYX02N211Q14R4R3VTXV3N1NU1P013ZR.html")
 mMenus.addFolder("2020")
 mMenus.addFolder("09")
+mMenus.addFolder("11")
+mMenus.addNode("Chinese Literature","../../mHtmls/mContent/SUNJYX02N211Q14R4R3VTXV3N1NU1P013ZR.html")
+mMenus.addNode("Chinese Literature","../../mHtmls/mContent/SUNJY1RV4VOQ4P01420W011TS3W31SV1242.html")
+mMenus.addNode("Chinese Literature","../../mHtmls/mContent/SUNJY211ZUO4030V0Q2202243TT3P4Z4414.html")
+mMenus.endFolder()
 mMenus.endFolder()
 mMenus.addFolder("08")
 mMenus.addFolder("28")
