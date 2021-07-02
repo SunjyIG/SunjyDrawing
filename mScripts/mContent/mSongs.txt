@@ -1,0 +1,14 @@
+document.write('<div class="mImgAbsolute"><img onclick="audioMctl()" src="../../mImages/mCommon/mbm.gif"  alt="Sunjy" /></div>');
+var songs=["不裝飾你的夢","睡蓮","琵琶語","無悔","和蘭花在一起","一夢千年","真的好想你","癡癡的等","風含情水含笑","回家","梁祝","在最美時分別","女兒情"];
+var index=["401","402","403","404","405","406","407","408","409","410","411","412","413"];
+var postfixs=[".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3"];
+var artists=["黃江琴","賈鵬芳","林海","賈鵬芳","Yanni","","付娜","黃江琴","付娜","Kenny G","李煒","付娜"];
+var i=seeds;
+var audio;
+var audios='<audio id="audio" controls="controls" style="margin-left:auto;margin-right:auto;opacity:1;display:none" preload="auto" autoplay="autoplay" loop="true" volume="100%" /><source src="" type="audio/mpeg">your browser does not support html5 audio.</audio>';
+var mroot="../../mOthers/02/";
+var mname=index[i];
+var sname=songs[i];
+var msuffix=postfixs[i];
+window.onload=function(){var adiv=document.getElementById("saudio");adiv.innerHTML=audios;audio=document.getElementById("audio");audio.src=mroot + mname + msuffix;var sdiv=document.getElementById("snames");sdiv.innerHTML=sname;}
+function audioMctl(){if (audio.paused==true){audio.play();}else{audio.pause();};}
