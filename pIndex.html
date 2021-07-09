@@ -17,7 +17,12 @@ a.no_underline{text-decoration:none;}
 
 </style>
 <title>Sunjy</title>
+<link rel="stylesheet" type="text/css" href="mCsses/mContent/mCssB.css" />
 <link rel="shortcut icon" type="image/x-icon" href="mImages/mCommon/favicon.ico" media="screen" />
+<div class="mImgAbsolute"><img  onclick=javascript:window.open("mImages/mCommon/qrcode_sunjyig.github.io.png"); src="mImages/mCommon/mbm.gif" title="Enlarge QR Code" alt="Sunjy" /></div>
+<div style="margin-left:auto;margin-right:auto;width:100%;text-align:center;color:red;font-family:arial;font-size:180%;">
+<noscript>Your browser does not support JavaScript!</noscript>
+</div>
 <p><a href="mHtmls/mCommon/mCatalog.html" target="_blank"><img src="mImages/mCommon/mOwnerIMG.gif" alt="Sunjy" title="Navigate To Catalog" /></a></p>
 <h2 title="Sunjy">Sunjy<sup><A title="Feedback" class="hlig " id="fbpgbt" href="mFedbk.html" target="_blank"><SPAN class="fbico"></SPAN><SPAN class="fblab"><SPAN> </SPAN></SPAN></A></sup></h2>
 <p><li title="Navigate To Tree-like Links"><a style="text-decoration:none;" href="mIndex.html"  target="_blank" title="Frameset for computer">Tree-Style Links (A For Compuer, iPad)</a></li></p>
@@ -25,6 +30,23 @@ a.no_underline{text-decoration:none;}
 <p><li title="Navigate To Catalog"><a style="text-decoration:none;" href="mHtmls/mCommon/mCatalog.html"  target="_blank">Catalog Links (For Mobile)</a></li></p>
 <p><li title="Navigate To Links"><a style="text-decoration:none;" href="mHtmls/mCommon/mLinks.html"  target="_blank">Content Links (For Mobile)</a></li></p>
 <p><a title="Sunjy"></a></p>
+<p></p><p></p>
+<div style="margin-left:auto;margin-right:auto;width:100%;text-align:center;color:#0000ff;font-family:arial;font-size:80%;">
+<p><h4>Quick Response Code(QR Code) of this site:</h4></p>
+<a><img title="Scan me OR Click to Enlarge me" onclick="javascript:window.open(this.src);" src="mImages/mCommon/qrcode_sunjyig.github.io.png" height=45% /></a>
+<p>Powered by SUN</p>
+<p></p>
+<p id="mYMD"></p>
+</div><p></p><p></p><p></p><p></p>
+<script>
+var date = new Date();
+var y = date.getFullYear();
+var m = date.getMonth()+1;
+var d = date.getDate();
+if(m<10){m="0"+m;};
+if(d<10){d="0"+d;};
+document.getElementById("mYMD").innerHTML = "Date："+y+"-"+m+"-"+d;
+</script>
 </html>
 
 
