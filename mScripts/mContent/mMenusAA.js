@@ -29,6 +29,7 @@ mMenus.addNode("無悔","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q023
 mMenus.addNode("琵琶語","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q022W0.html")
 mMenus.addNode("不裝飾你的夢","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q021W0.html")
 mMenus.addNode("睡蓮","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q020W0.html")
+mMenus.addNode("音樂隨機播","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q000W0.html")
 mMenus.endFolder()
 mMenus.endFolder()
 mMenus.endFolder()

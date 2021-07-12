@@ -447,8 +447,9 @@ d.add(446,436,"20210630----無悔","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZX
 d.add(447,436,"20210630----琵琶語","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q022W0.html","","main");
 d.add(448,436,"20210630----不裝飾你的夢","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q021W0.html","","main");
 d.add(449,436,"20210630----睡蓮","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q020W0.html","","main");
-d.add(450,0,"Others");
-d.add(451,450,"20200703----荷花欣赏","../../mHtmls/mContent/SUNJYWW14O2S01RRVU31404RTS3PZ300SUS.html","","main");
-d.add(452,450,"20200202----LOTUS","../../mHtmls/mContent/SUNJYX4U0S3N24203S20YS0Q2WT10401PP3.html","","main");
-d.add(453,450,"20200202----FLASH OF LOTUS","../../mHtmls/mContent/SUNJYQRPXQ66H58K6TDEN23EX711519R67U.html","","main");
+d.add(450,436,"20210630----音樂隨機播","../../mHtmls/mContent/SUNJY1UR2WOTT4U40TX0ZXV2RR121Q000W0.html","","main");
+d.add(451,0,"Others");
+d.add(452,451,"20200703----荷花欣赏","../../mHtmls/mContent/SUNJYWW14O2S01RRVU31404RTS3PZ300SUS.html","","main");
+d.add(453,451,"20200202----LOTUS","../../mHtmls/mContent/SUNJYX4U0S3N24203S20YS0Q2WT10401PP3.html","","main");
+d.add(454,451,"20200202----FLASH OF LOTUS","../../mHtmls/mContent/SUNJYQRPXQ66H58K6TDEN23EX711519R67U.html","","main");
 document.write(d);
