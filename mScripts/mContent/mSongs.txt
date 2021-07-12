@@ -41,8 +41,8 @@ function maudioinit(){
 	audio.loop=false;
 	audio.addEventListener("ended", function(){mgetsong();},false);
 	audio.addEventListener("error", function(){mgetsong();},false);
-	audio.addEventListener("stalled", function(){mgetsong();},false);
-	audio.addEventListener("suspend", function(){mgetsong();},false);
+	audio.addEventListener("stalled", function(){},false);
+	audio.addEventListener("suspend", function(){},false);
 	audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;mLableB.innerHTML="Current:  " + getTimes(mcurrenttime);mLableC.innerHTML="Balance:  " + getTimes(mtotal-mcurrenttime);},false);
 	audio.addEventListener("play", function(){mtotal=audio.duration;mLableA.innerHTML="Duration:  " + getTimes(mtotal);mLableD.innerHTML="Next:  " + mnextsongname;},false);
 	//audio.addEventListener("play", function(){mtotal=audio.duration;mLableA.innerHTML="Duration:  " + getTimes(mtotal);},false);
