@@ -9,6 +9,7 @@ var mrt="https://sunjyig.github.io/SunjyDrawing/mHtmls/mContent/";
 var mname;
 var sname;
 var msuffix;
+var mwarning='<div><p style="margin-left:auto;margin-right:auto;text-align:center;color:red;font-family:arial;font-size:150%;"/>Error encountered!</p><p style="margin-left:auto;margin-right:auto;text-align:center;color:red;font-family:arial;font-size:80%;"/>POWERED BY:SUN</p></div>';
 /*
 new
 */
@@ -28,9 +29,18 @@ window.onload=function(){var adiv=document.getElementById("saudio");adiv.innerHT
 function audioMctl(){if (audio.paused==true){audio.play();}else{audio.pause();};}
 function mplayer(){
 	monce=true;
-	var vtype=mRequest.mQueryString("type");
-	i=mRequest.mQueryString("index");
-	try{mcurrenttime=mRequest.mQueryString("snds");}catch(err){mcurrenttime=0;}
+	var merra=false;
+	var merrb=false;
+	var merrc=false;
+	var vtype;
+	try{vtype=mRequest.mQueryString("type");}catch(err){merra=true;}
+	try{i=mRequest.mQueryString("index");}catch(err){merrb=true;}
+	try{mcurrenttime=mRequest.mQueryString("snds");}catch(err){mcurrenttime=0;merrb=true;}
+	if (merra||merrb||merrc){document.write(mwarning);return;}
+	if (i>songs.length-1){merra=true;}
+	if (vtype!=types[i]){merrb=true;}
+	if (typeof mcurrenttime === "number" && !isNaN(mcurrenttime)){merrc=true;}
+	if (merra||merrb||merrc){document.write(mwarning);return;}
 	mname=index[i];sname=songs[i];msuffix=postfixs[i];document.getElementById("snames").innerHTML=sname;
 	if (vtype !=0){
 		try{var child=document.getElementById("audio");child.parentNode.removeChild(child);}catch(err){}
@@ -39,6 +49,7 @@ function mplayer(){
 	}
 	audio.src=mroot + mname + msuffix;
 	audio.addEventListener("loadedmetadata", function(){});
+	try{if(mcurrenttime>=audio.duration){mcurrenttime=0;}}catch(err){}
 	audio.addEventListener("play", function(){if (monce){audio.currentTime=mcurrenttime;monce=false;};});
 	//audio.removeEventListener("play", function(){});
 }
