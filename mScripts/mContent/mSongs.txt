@@ -22,12 +22,15 @@ var mcnt=0;
 var ii=0;
 var mQRcode=0;
 var mtype=0;
+var monce=true;
 var element='<div id="mcanvas" style="margin-left:auto;margin-right:auto;width:100%;height:100%;text-align:center;color:#0000ff;font-family:arial;font-size:80%;"/></div>'
 window.onload=function(){var adiv=document.getElementById("saudio");adiv.innerHTML=audios;audio=document.getElementById("audio");if(i==-1){maudioinit();mgetsong();}else{if(i==-2){mplayer();}else{audio.loop="loop";mname=index[i];sname=songs[i];msuffix=postfixs[i];audio.src=mroot + mname + msuffix;var sdiv=document.getElementById("snames");sdiv.innerHTML=sname;}};}
 function audioMctl(){if (audio.paused==true){audio.play();}else{audio.pause();};}
 function mplayer(){
+	monce=true;
 	var vtype=mRequest.mQueryString("type");
 	i=mRequest.mQueryString("index");
+	try{mcurrenttime=mRequest.mQueryString("snds");}catch(err){mcurrenttime=0;}
 	mname=index[i];sname=songs[i];msuffix=postfixs[i];document.getElementById("snames").innerHTML=sname;
 	if (vtype !=0){
 		try{var child=document.getElementById("audio");child.parentNode.removeChild(child);}catch(err){}
@@ -35,6 +38,9 @@ function mplayer(){
 		audio=document.getElementById("audio");
 	}
 	audio.src=mroot + mname + msuffix;
+	audio.addEventListener("loadedmetadata", function(){});
+	audio.addEventListener("play", function(){if (monce){audio.currentTime=mcurrenttime;monce=false;};});
+	//audio.removeEventListener("play", function(){});
 }
 
 var mRequest={
@@ -85,9 +91,9 @@ function mQRcodeIMG(p){
 		colorLight : "#FFFF99",
 		correctLevel : QRCode.CorrectLevel.H
 	});
-	qrcode.makeCode(mrt+p+"&type="+types[p]);
+	qrcode.makeCode(mrt+p+"&type="+types[p]+"&snds=0");
 	var qr=document.querySelector("#mcanvas");
-	qr.addEventListener("click", function(){window.open("../../mHtmls/mCommon/mplayer.html?index="+p+"&type="+types[p]);},false);
+	qr.addEventListener("click", function(){audio.pause();window.open("../../mHtmls/mCommon/mplayer.html?index="+p+"&type="+types[p]+"&snds="+mcurrenttime);},false);
 }
 
 function mprocess(p){
