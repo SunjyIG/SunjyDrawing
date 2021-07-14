@@ -28,6 +28,15 @@ var element='<div id="mcanvas" style="margin-left:auto;margin-right:auto;width:1
 window.onload=function(){var adiv=document.getElementById("saudio");adiv.innerHTML=audios;audio=document.getElementById("audio");if(i==-1){maudioinit();mgetsong();}else{if(i==-2){mplayer();}else{audio.loop="loop";mname=index[i];sname=songs[i];msuffix=postfixs[i];audio.src=mroot + mname + msuffix;var sdiv=document.getElementById("snames");sdiv.innerHTML=sname;}};}
 function audioMctl(){if (audio.paused==true){audio.play();}else{audio.pause();};}
 function mplayer(){
+	mnews();
+	msadd();
+	/*
+	<script type="text/javascript" src="../../mScripts/mCommon/mQRcode.js"/></script>
+	*/
+	mLableA=document.getElementById("infoA");
+	mLableB=document.getElementById("infoB");
+	mLableC=document.getElementById("infoC");
+	mLableF=document.getElementById("infoF");
 	monce=true;
 	var merra=false;
 	var merrb=false;
@@ -50,8 +59,10 @@ function mplayer(){
 	audio.src=mroot + mname + msuffix;
 	audio.addEventListener("loadedmetadata", function(){});
 	try{if(mcurrenttime>=audio.duration){mcurrenttime=0;}}catch(err){}
-	audio.addEventListener("play", function(){if (monce){audio.currentTime=mcurrenttime;monce=false;};});
+	audio.addEventListener("play", function(){if (monce){audio.currentTime=mcurrenttime;monce=false;mtotal=audio.duration;mLableA.innerHTML="Duration:  " + getTimes(mtotal);mQRcodeIMG(i,1);audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;mLableB.innerHTML="Current:  " + getTimes(mcurrenttime);mLableC.innerHTML="Balance:  " + getTimes(mtotal-mcurrenttime);},false);}});
 	//audio.removeEventListener("play", function(){});
+	//audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;mLableB.innerHTML="Current:  " + getTimes(mcurrenttime);mLableC.innerHTML="Balance:  " + getTimes(mtotal-mcurrenttime);},false);
+	
 }
 
 var mRequest={
@@ -88,10 +99,10 @@ ii=getRandom(0,msongscount-1);
 if (msongscount !=1){while (i==ii){ii=getRandom(0,msongscount-1);}}
 mnextsongname=songs[ii];
 mprocess(i);
-mQRcodeIMG(i);
+mQRcodeIMG(i,0);
 }
 
-function mQRcodeIMG(p){
+function mQRcodeIMG(p,q){
 	document.getElementById("info0").innerHTML="Share Song:  " + songs[p];
 	try{var child=document.getElementById("mcanvas");child.parentNode.removeChild(child);}catch(err){}
 	mLableF.innerHTML=element;
@@ -103,8 +114,10 @@ function mQRcodeIMG(p){
 		correctLevel : QRCode.CorrectLevel.H
 	});
 	qrcode.makeCode(mrt+p+"&type="+types[p]+"&snds=0");
+	if (q==0){
 	var qr=document.querySelector("#mcanvas");
-	qr.addEventListener("click", function(){audio.pause();window.open("../../mHtmls/mCommon/mplayer.html?index="+p+"&type="+types[p]+"&snds="+mcurrenttime);},false);
+	//qr.addEventListener("click", function(){audio.pause();window.location.href="../../mHtmls/mCommon/mplayer.html?index="+p+"&type="+types[p]+"&snds="+mcurrenttime;},false);}
+	qr.addEventListener("click", function(){audio.pause();window.open("../../mHtmls/mCommon/mplayer.html?index="+p+"&type="+types[p]+"&snds="+mcurrenttime);},false);}
 }
 
 function mprocess(p){
@@ -113,10 +126,20 @@ mname=index[p];sname=songs[p];msuffix=postfixs[p];audio.src=mroot + mname + msuf
 
 function mnews(){
 	mrt="https://sunjyig.github.io/SunjyDrawing/mHtmls/mCommon/mplayer.html?index=";
+	//document.addEventListener('contextmenu',function(e){e.preventDefault();})
 	return;
 	var mscript=document.createElement("script");
 	mscript.setAttribute("type","text/javascript");
-	mscript.setAttribute("src","../../mScripts/mCommon/mQRcode.js");
+	mscript.setAttribute("src","../../mScripts/mCommon/mSgqrcs.js");
+	document.body.appendChild(mscript);
+	mscript.onload=mscript.onreadystatechange=function(){if(!this.readyState||this.readyState=="loaded"||this.readyState=="complete"){mQRcode=1;}else{mQRcode=0;}}
+}
+function msadd(){
+	try{document.getElementById("mscriptqr").remove();}catch(err){}
+	var mscript=document.createElement("script");
+	mscript.setAttribute("id","mscriptqr");
+	mscript.setAttribute("type","text/javascript");
+	mscript.setAttribute("src","../../mScripts/mCommon/mSgqrcs.js");
 	document.body.appendChild(mscript);
 	mscript.onload=mscript.onreadystatechange=function(){if(!this.readyState||this.readyState=="loaded"||this.readyState=="complete"){mQRcode=1;}else{mQRcode=0;}}
 }
