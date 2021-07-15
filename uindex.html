@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="keywords" content="drawing, painting" />
+<meta name="description" content="drawings by Sunjy" />
+<title>Sunjy</title>
+<link rel="shortcut icon" type="image/x-icon" href="mImages/mCommon/favicon.ico" media="screen" />
+<style>
+.mcontainer{background-color:white;overflow:hidden;}
+.mleft{maigin-left:5px;width:30%;float:left;height:100%;background-color:white;overflow-y:scroll;overflow-x:scroll;}
+.mright{maigin-left:0px;height:100%;background-color:blue;overflow-x:hidden;overflow-y:hidden;}
+</style>
+<link rel="import" href="mHtmls/mCommon/mALft.html" id="page1"/>
+<link rel="import" href="mHtmls/mCommon/mARgt.html" id="page2"/>
+</head>
+<body style="overflow-y:hidden;overflow-x:hidden">
+<div class="mcontainer">
+	<div class="mleft" id="carnoc" name="carnoc" scrolling="yes"/>
+		<script type="text/javascript">
+//var a=document.getElementsById("carnoc");
+//a.innerHTML=page1.import.body.innerHTML;
+//document.write(page1.import.body.innerHTML);
+alert(page1.import.body.innerHTML);
+		</script>
+	</div>
+	<div class="mright" id="mainr" name="mainr" scrolling="yes" />
+
+	</div>
+</div>
+</body>
+</html>
