@@ -19,11 +19,14 @@ var mbalance;
 var mnextsongname;
 var msongscount=0;
 var mLableA,mLableB,mLableC,mLableD,mLableE,mLableF;
+var mvalue;
 var mcnt=0;
 var ii=0;
 var mQRcode=0;
 var mtype=0;
 var monce=true;
+var isdown=false,ismove=false;
+var matv=0;
 var element='<div id="mcanvas" style="margin-left:auto;margin-right:auto;width:100%;height:100%;text-align:center;color:#0000ff;font-family:arial;font-size:80%;"/></div>'
 window.onload=function(){var adiv=document.getElementById("saudio");adiv.innerHTML=audios;audio=document.getElementById("audio");if(i==-1){maudioinit();mgetsong();}else{if(i==-2){mplayer();}else{audio.loop="loop";mname=index[i];sname=songs[i];msuffix=postfixs[i];audio.src=mroot + mname + msuffix;var sdiv=document.getElementById("snames");sdiv.innerHTML=sname;}};}
 function audioMctl(){if (audio.paused==true){audio.play();}else{audio.pause();};}
@@ -42,6 +45,8 @@ function mplayer(){
 	var merrb=false;
 	var merrc=false;
 	var vtype;
+	mvalue=document.getElementById("mrange");
+	mvalue.min=0;mvalue.step=1;mvalue.max=100;mvalue.value=0;
 	try{vtype=mRequest.mQueryString("type");}catch(err){merra=true;}
 	try{i=mRequest.mQueryString("index");}catch(err){merrb=true;}
 	try{mcurrenttime=mRequest.mQueryString("snds");}catch(err){mcurrenttime=0;merrb=true;}
@@ -59,7 +64,7 @@ function mplayer(){
 	audio.src=mroot + mname + msuffix;
 	audio.addEventListener("loadedmetadata", function(){});
 	try{if(mcurrenttime>=audio.duration){mcurrenttime=0;}}catch(err){}
-	audio.addEventListener("play", function(){if (monce){audio.currentTime=mcurrenttime;monce=false;mtotal=audio.duration;mLableA.innerHTML="Duration:  " + getTimes(mtotal);mQRcodeIMG(i,1);audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;mLableB.innerHTML="Current:  " + getTimes(mcurrenttime);mLableC.innerHTML="Balance:  " + getTimes(mtotal-mcurrenttime);},false);}});
+	audio.addEventListener("play", function(){if (monce){audio.currentTime=mcurrenttime;monce=false;mtotal=audio.duration;mvalue.max=mtotal;mLableA.innerHTML="Duration:  " + getTimes(mtotal);mQRcodeIMG(i,1);audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;if(!isdown){mvalue.value=mcurrenttime;};mLableB.innerHTML="Current:  " + getTimes(mcurrenttime);mLableC.innerHTML="Balance:  " + getTimes(mtotal-mcurrenttime);},false);}});
 	//audio.removeEventListener("play", function(){});
 	//audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;mLableB.innerHTML="Current:  " + getTimes(mcurrenttime);mLableC.innerHTML="Balance:  " + getTimes(mtotal-mcurrenttime);},false);
 	
@@ -83,14 +88,23 @@ function maudioinit(){
 	mLableF=document.getElementById("infoF");
 	mLableE.innerHTML="Songs Total:  " + msongscount;
 	audio.loop=false;
+	mvalue=document.getElementById("mrange");
+	mvalue.min=0;mvalue.step=1;mvalue.max=100;mvalue.value=0;
 	audio.addEventListener("ended", function(){mgetsong();},false);
 	audio.addEventListener("error", function(){mgetsong();},false);
 	audio.addEventListener("stalled", function(){},false);
 	audio.addEventListener("suspend", function(){},false);
-	audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;mLableB.innerHTML="Current:  " + getTimes(mcurrenttime);mLableC.innerHTML="Balance:  " + getTimes(mtotal-mcurrenttime);},false);
-	audio.addEventListener("play", function(){mtotal=audio.duration;mLableA.innerHTML="Duration:  " + getTimes(mtotal);mLableD.innerHTML="Next:  " + mnextsongname;},false);
+	audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;if(!isdown){mvalue.value=mcurrenttime;};mLableB.innerHTML="Current:  " + getTimes(mcurrenttime);mLableC.innerHTML="Balance:  " + getTimes(mtotal-mcurrenttime);},false);
+	audio.addEventListener("play", function(){mtotal=audio.duration;mvalue.max=mtotal;mLableA.innerHTML="Duration:  " + getTimes(mtotal);mLableD.innerHTML="Next:  " + mnextsongname;},false);
 	//audio.addEventListener("play", function(){mtotal=audio.duration;mLableA.innerHTML="Duration:  " + getTimes(mtotal);},false);
 }
+
+function musicvalue(){
+}
+function mmousedown(){isdown=true;matv=0;}
+function mmousemove(){ismove=true;}
+function mmouseup(){if(isdown && ismove){matv=mvalue.value;isdown=false;ismove=false;if(matv != mcurrenttime){audio.pause();audio.currentTime=matv;audio.play();madjust(matv);}}}
+function madjust(p){}
 
 function mgetsong(){
 mcnt++;
