@@ -30,7 +30,7 @@ var isdown=false,ismove=false;
 var matv=0;
 var isdownv=false,ismovev=false;
 var currentvolume=100;
-var maudiocontrol=true;
+var maudiocontrol=false;
 var element='<div id="mcanvas" style="margin-left:auto;margin-right:auto;width:100%;height:100%;text-align:center;color:#0000ff;font-family:arial;font-size:80%;"/></div>'
 window.onload=function(){var adiv=document.getElementById("saudio");adiv.innerHTML=audios;audio=document.getElementById("audio");if(i==-1){maudioinit();mgetsong();}else{if(i==-2){mplayer();}else{audio.loop="loop";mname=index[i];sname=songs[i];msuffix=postfixs[i];audio.src=mroot + mname + msuffix;var sdiv=document.getElementById("snames");sdiv.innerHTML=sname;}};}
 function audioMctl(){if (audio.paused==true){audio.play();}else{audio.pause();};}

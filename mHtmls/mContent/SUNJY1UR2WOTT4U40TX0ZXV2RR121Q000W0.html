@@ -58,11 +58,11 @@ body {
 
 <div id="snames" style="margin-left:auto;margin-right:auto;width:100%;text-align:center;color:yellow;font-family:arial;font-size:150%;">
 </div><p></p>
-<div id="mrng" style="margin-left:auto;margin-right:auto;width:75%;height=2px;text-align:left;color:yellow;font-family:arial;font-size:80%;"/>
-Progress<input type="range" id="mrange" min="0" max="100" step="0.001" value="0" onchange="musicvalue()" onmousedown="mmousedown()" onmousemove="mmousemove()" onmouseup="mmouseup()" style="width:60%;height=2px;margin-left:auto;margin-right:auto;opacity:0.4;border-radius:10px;outline:none;background:transparent;margin-top:1px;box-shadow:blue;border-color:transparent;"/> 
+<div id="mrng" style="margin-left:auto;margin-right:auto;width:75%;height=2px;text-align:left;color:yellow;font-family:arial;font-size:80%;display:none;"/>
+Progress<input type="range" id="mrange" min="0" max="100" step="0.001" value="0" onchange="musicvalue()" onmousedown="mmousedown()" ontouchstart="mmousedown()" onmousemove="mmousemove()" ontouchmove="mmousemove()" onmouseup="mmouseup()" ontouchend="mmouseup()" style="width:60%;height=2px;margin-left:auto;margin-right:auto;opacity:0.4;border-radius:10px;outline:none;background:transparent;margin-top:1px;box-shadow:blue;border-color:transparent;"/> 
 </div><p></p>
-<div id="mrngv" style="margin-left:auto;margin-right:auto;width:75%;height=2px;text-align:left;color:yellow;font-family:arial;font-size:80%;"/>
-Volume&nbsp;&nbsp;<input type="range" id="mrangev" min="0" max="1" step="0.005" value="1" onchange="musicvaluev()" onmousedown="mmousedownv()" onmousemove="mmousemovev()" onmouseup="mmouseupv()" style="width:60%;height=2px;margin-left:auto;margin-right:auto;opacity:0.4;border-radius:10px;outline:none;background:transparent;margin-top:1px;box-shadow:blue;border-color:transparent;"/> 
+<div id="mrngv" style="margin-left:auto;margin-right:auto;width:75%;height=2px;text-align:left;color:yellow;font-family:arial;font-size:80%;display:none;"/>
+Volume&nbsp;&nbsp;<input type="range" id="mrangev" min="0" max="1" step="0.005" value="1" onchange="musicvaluev()" onmousedown="mmousedownv()" ontouchstart="mmousedownv()" onmousemove="mmousemovev()" ontouchmove="mmousemovev()" onmouseup="mmouseupv()" ontouchend="mmouseupv()" style="width:60%;height=2px;margin-left:auto;margin-right:auto;opacity:0.4;border-radius:10px;outline:none;background:transparent;margin-top:1px;box-shadow:blue;border-color:transparent;"/> 
 </div><p></p>
 <div id="infoA" style="margin-left:auto;margin-right:auto;width:100%;text-align:center;color:yellow;font-family:arial;font-size:80%;">
 </div><p></p>
