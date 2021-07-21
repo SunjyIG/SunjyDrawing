@@ -32,7 +32,7 @@ var isdownv=false,ismovev=false;
 var currentvolume=100;
 var maudiocontrol=false;
 var element='<div id="mcanvas" style="margin-left:auto;margin-right:auto;width:100%;height:100%;text-align:center;color:#0000ff;font-family:arial;font-size:80%;"/></div>'
-window.onload=function(){var adiv=document.getElementById("saudio");adiv.innerHTML=audios;audio=document.getElementById("audio");if(i==-1){maudioinit();mgetsong();}else{if(i==-2){mplayer();}else{audio.loop="loop";mname=index[i];sname=songs[i];msuffix=postfixs[i];audio.src=mroot + mname + msuffix;var sdiv=document.getElementById("snames");sdiv.innerHTML=sname;}};}
+window.onload=function(){var adiv=document.getElementById("saudio");adiv.innerHTML=audios;audio=document.getElementById("audio");if(i==-1){maudioinit();mgetsong();}else{if(i==-2){mplayer();}else{try{audio.loop="loop";mname=index[i];sname=songs[i];msuffix=postfixs[i];audio.src=mroot + mname + msuffix;var sdiv=document.getElementById("snames");sdiv.innerHTML=sname;}catch(merrs){}}};}
 function audioMctl(){if (audio.paused==true){audio.play();}else{audio.pause();};}
 function mplayer(){
 	mnews();
@@ -196,4 +196,38 @@ function getRandom(num1,num2){
 
 			return Math.floor(Math.random()*(max-min+1) + min);break;
 		default: return 0;break;}
+}
+
+function mqr(){
+try{document.getElementById("mbarcode").src="";}catch(merr){}
+try{var child=document.getElementById("mcanvas");child.parentNode.removeChild(child);}catch(err){}
+	var s=document.getElementById("mtext");
+if(s.value==""){return;}
+	mLableF=document.getElementById("infoF");
+	try{var child=document.getElementById("mcanvas");child.parentNode.removeChild(child);}catch(err){}
+	mLableF.innerHTML=element;
+try{
+	var qrcode = new QRCode(document.getElementById("mcanvas"), {
+		width : 370,
+		height : 370,
+		colorDark : "#000000",
+		colorLight : "#ffffff",
+		correctLevel : QRCode.CorrectLevel.H
+	});
+	qrcode.clear();
+	qrcode.makeCode(s.value);
+}catch(merr){}
+try{
+	var barcode = document.getElementById("mbarcode");barcode.src="";
+        var str = s.value;
+        options = {
+            //format: "Code128B",
+            displayValue: true,
+            fontSize: 18,
+            lineColor: "black", 
+            width:2,
+            height: 100
+        };
+	JsBarcode(barcode, str, options);
+}catch(merr){}
 }
