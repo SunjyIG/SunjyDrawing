@@ -38,7 +38,9 @@ for (rr=0;rr<mtab.rows.length-1;rr++){
 			i=rr;
 			try{
 				var ids=mtab.rows(rr).getAttribute("id");
-				var scrollTop=document.getElementById(ids).offsetTop;
+				var scrollTop=document.getElementById(ids).offsetTop; //document.documentElement.scrollTop || document.body.scrollTop
+				window.pageYOffset=scrollTop;
+				document.documentElement.scrollTop=scrollTop;
 				document.body.scrollTop=scrollTop;}
 			catch(ex){try{var ids=mtab.rows(rr).getAttribute("id");var scrollTop=document.getElementById(ids).offset().top;document.body.scrollTop=scrollTop;}catch(ey){}}
 		}
