@@ -13,14 +13,12 @@
 <noscript>Your browser does not support JavaScript!</noscript>
 </div>
 <style></style>
-</head>
-
-<body background="../../mOthers/02/001.bmp" lang=ZH-CN link=blue vlink=purple style='tab-interval:21.0pt;text-justify-trim:
-punctuation'>
-
 <script>
 window.onload=function(){init();}
+document.body.onload=function(){init();}
 document.onready=function(){init();}
+document.getElementById("sunriseset").onload=function(){init();}
+
 function init(){
 	var mtab=document.getElementById("sunriseset");
 	//for (jj=0;jj<mtab.rows(0).cells.length-1;jj++){}
@@ -51,6 +49,11 @@ for (rr=0;rr<mtab.rows.length-1;rr++){
 }};
 //document.onready=function(){alert(2);};
 </script>
+</head>
+
+<body onclick="init()" background="../../mOthers/02/001.bmp" lang=ZH-CN link=blue vlink=purple style='tab-interval:21.0pt;text-justify-trim:
+punctuation'>
+
 
 <div style='margin-left:auto;margin-right:auto;width:100%;text-align:center;layout-grid:15.6pt'>
 
