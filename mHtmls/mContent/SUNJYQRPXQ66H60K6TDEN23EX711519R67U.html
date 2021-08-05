@@ -19,7 +19,9 @@
 punctuation'>
 
 <script>
-window.onload=function(){
+window.onload=function(){init();}
+document.onready=function(){init();}
+function init(){
 	var mtab=document.getElementById("sunriseset");
 	//for (jj=0;jj<mtab.rows(0).cells.length-1;jj++){}
 	var ymd=new Date();
@@ -38,7 +40,7 @@ for (rr=0;rr<mtab.rows.length-1;rr++){
 				var ids=mtab.rows(rr).getAttribute("id");
 				var scrollTop=document.getElementById(ids).offsetTop;
 				document.body.scrollTop=scrollTop;}
-			catch(ex){}
+			catch(ex){try{var ids=mtab.rows(rr).getAttribute("id");var scrollTop=document.getElementById(ids).offset().top;document.body.scrollTop=scrollTop;}catch(ey){}}
 		}
 	}
 }};
