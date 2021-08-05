@@ -21,29 +21,29 @@ document.getElementById("sunriseset").onload=function(){init();}
 
 function init(){
 	var mtab=document.getElementById("sunriseset");
-	//for (jj=0;jj<mtab.rows(0).cells.length-1;jj++){}
+	//for (jj=0;jj<mtab.rows[0].cells.length;jj++){}
 	var ymd=new Date();
 	var mm=ymd.getMonth()+1;if (mm<10){mm="0"+mm;};
 	var dd=ymd.getDate();if (dd<10){dd="0"+dd};
 	var md=mm+dd;
 	var i=0;
 	var ii=0;
-for (rr=0;rr<mtab.rows.length-1;rr++){
-	var mtext=mtab.rows(rr).cells(1).innerText;
+for (rr=0;rr<mtab.rows.length;rr++){
+	var mtext=mtab.rows[rr].cells[1].innerText;
 	if (md==mtext){
-		try{mtab.rows(rr).style.backgroundColor="#ffc0cb";}catch(ex){}
-		try{mtab.rows(rr).style.background="#ffc0cb";}catch(ex){}
-		try{mtab.rows(rr).style.bgColor="#ffc0cb";}catch(ex){}
-		//mtab.rows(rr).style.backgroundColor= "pink";
+		try{mtab.rows[rr].style.backgroundColor="#ffc0cb";}catch(ex){}
+		try{mtab.rows[rr].style.background="#ffc0cb";}catch(ex){}
+		try{mtab.rows[rr].style.bgColor="#ffc0cb";}catch(ex){}
+		//mtab.rows[rr].style.backgroundColor= "pink";
 		if (i==0){
 			i=rr;
 			try{
-				var ids=mtab.rows(rr).getAttribute("id");
+				var ids=mtab.rows[rr].getAttribute("id");
 				var scrollTop=document.getElementById(ids).offsetTop; //document.documentElement.scrollTop || document.body.scrollTop
 				window.pageYOffset=scrollTop;
 				document.documentElement.scrollTop=scrollTop;
 				document.body.scrollTop=scrollTop;}
-			catch(ex){};try{var ids=mtab.rows(rr).getAttribute("id");var scrollTop=document.getElementById(ids).offset().top;window.pageYOffset=scrollTop;document.body.scrollTop=scrollTop;}catch(ey){};
+			catch(ex){};try{var ids=mtab.rows[rr].getAttribute("id");var scrollTop=document.getElementById(ids).offset().top;window.pageYOffset=scrollTop;document.body.scrollTop=scrollTop;}catch(ey){};
 		}
 	}
 }};
