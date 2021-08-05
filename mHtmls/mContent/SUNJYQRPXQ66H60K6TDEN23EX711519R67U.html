@@ -33,7 +33,10 @@ function init(){
 for (rr=0;rr<mtab.rows.length-1;rr++){
 	var mtext=mtab.rows(rr).cells(1).innerText;
 	if (md==mtext){
-		mtab.rows(rr).style.backgroundColor= "pink";
+		try{mtab.rows(rr).style.backgroundColor="#ffc0cb";}catch(ex){}
+		try{mtab.rows(rr).style.background="#ffc0cb";}catch(ex){}
+		try{mtab.rows(rr).style.bgColor="#ffc0cb";}catch(ex){}
+		//mtab.rows(rr).style.backgroundColor= "pink";
 		if (i==0){
 			i=rr;
 			try{
