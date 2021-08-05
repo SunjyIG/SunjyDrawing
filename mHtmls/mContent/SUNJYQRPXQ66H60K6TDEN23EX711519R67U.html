@@ -33,7 +33,7 @@ function init(){
 for (rr=0;rr<mtab.rows.length-1;rr++){
 	var mtext=mtab.rows(rr).cells(1).innerText;
 	if (md==mtext){
-		mtab.rows(rr).style.background= "pink";
+		mtab.rows(rr).style.backgroundColor= "pink";
 		if (i==0){
 			i=rr;
 			try{
@@ -42,7 +42,7 @@ for (rr=0;rr<mtab.rows.length-1;rr++){
 				window.pageYOffset=scrollTop;
 				document.documentElement.scrollTop=scrollTop;
 				document.body.scrollTop=scrollTop;}
-			catch(ex){try{var ids=mtab.rows(rr).getAttribute("id");var scrollTop=document.getElementById(ids).offset().top;document.body.scrollTop=scrollTop;}catch(ey){}}
+			catch(ex){};try{var ids=mtab.rows(rr).getAttribute("id");var scrollTop=document.getElementById(ids).offset().top;window.pageYOffset=scrollTop;document.body.scrollTop=scrollTop;}catch(ey){};
 		}
 	}
 }};
