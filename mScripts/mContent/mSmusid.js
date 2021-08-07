@@ -212,6 +212,7 @@ mrows.appendChild(mcells);
 }catch(ex){}
 
 }
+
 function getColumnDetail(column){
 //alert(column.getAttribute("id"));
 clsg();
