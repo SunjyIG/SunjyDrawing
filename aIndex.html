@@ -1,0 +1,76 @@
+<html>
+<head>
+<!--<meta http-equiv=Content-Type content="text/html; charset=gb2312">-->
+<meta charset="UTF-8" />
+<meta name="keywords" content="drawing, painting" />
+<meta name="description" content="drawings by Sunjy" />
+<title>Sunjy</title>
+<link rel="stylesheet" type="text/css" href="mCsses/mContent/mCssB.css" />
+<link rel="shortcut icon" type="image/x-icon" href="mImages/mCommon/favicon.ico" media="screen" />
+<div class="mImgAbsolute"><img src="mImages/mCommon/mbm.gif" title="Visit my website, Sunjy" alt="Sunjy" onclick="javascript:self.location.href='pIndex.html';"/></div>
+<div style="margin-left:auto;margin-right:auto;width:100%;text-align:center;color:red;font-family:arial;font-size:180%;">
+<noscript>Your browser does not support JavaScript!</noscript>
+</div>
+<style>
+.mtable {border:3px solid blue;border-collapse:collapse;border-spacing:0;}
+.mtable thead{}
+.mtable thead th{border:1px solid blue;background:#ccc;}
+.mtable tbody{display:block;overflow-y:scroll;}
+.mtable thead,tbody tr{height:30px}
+.mtable thead tr{height:45px}
+.mtable td{border:1px solid blue;overflow:auto}
+</style>
+<script type="text/javascript" src="mScripts/mContent/mSglsts.txt"/></script>
+<script type="text/javascript" src="mScripts/mContent/mSmusid.txt"/></script>
+<script>
+//window.onload=
+function init(){
+var _table = document.getElementById("mtaby");  
+var _row;  
+var _cell;  
+
+for(var i = 0; i < 50; i++) {  
+_row = document.createElement("tr");  
+_table.appendChild(_row);  
+for(var j = 0; j < 5; j++) {  
+_cell = document.createElement("td");  
+_cell.innerText = "222";  
+_row.appendChild(_cell);  
+}  
+}
+var tableAdd=document.getElementById("mtab");
+var newRow=tableAdd.insertRow(-1);
+var newCol=newRow.insertCell(-1); 
+newCol.innerHTML ="11123qqqqqqqqqqqqqqqqqqqqqqqqq";
+newCol.colSpan = 3;
+} 
+</script>
+</head>
+<body background="mImages/mCommon/mbq.gif"/>
+<div id="mHeader" style="margin-left:auto;margin-right:auto;width:90%;text-align:center;opacity:1;color:green;font-family:arial;font-size:300%;background-image:url(mImages/mCommon/mbr.jpg);"/>Music</div>
+
+<div id="mContainer" style="margin-left:auto;margin-right:auto;width:90%;text-align:center;opacity:1;color:pink;font-family:arial;font-size:80%;background-image:url(mOthers/02/001.bmp);"/>
+
+<table id="mtab" class="mtable" style="margin-left:auto;margin-right:auto;width:80%;text-align:center;opacity:1;color:green;font-family:arial;font-size:70%;background-color:white"/>  
+<thead id="mtabh"/>
+<tr>
+<th>Status</th>
+<th>Name</th>
+<th>Duration</th>
+<th>Current</th>
+<th>Balance</th>
+</tr>
+</thead>
+<tbody id="mtaby"/>  
+</tbody>  
+</table>
+ 
+</div>
+
+<div id="mFooter" style="margin-left:auto;margin-right:auto;width:90%;text-align:center;opacity:1;color:green;font-family:arial;font-size:70%;background-image:url(mImages/mCommon/mbr.jpg);"/>Powered by SUN
+</div>
+<div  id="saudio"  style="margin-left:auto;margin-right:auto;width:100%;text-align:center;color:#0000ff;font-family:arial;font-size:80%;">
+</div>
+
+</body>
+</html>

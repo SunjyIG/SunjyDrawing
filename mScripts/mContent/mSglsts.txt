@@ -2,5 +2,5 @@ var songs=["不裝飾你的夢","睡蓮","琵琶語","無悔","和蘭花在一�
 var index=["401","402","403","404","405","406","407","408","409","410","411","412","413","414","415"];
 var postfixs=[".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3",".mp3"];
 var types=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var artists=["黃江琴","賈鵬芳","林海","賈鵬芳","Yanni","","付娜","黃江琴","付娜","Kenny G","李煒","付娜","",""];
+var artists=["黃江琴","賈鵬芳","林海","賈鵬芳","Yanni","","付娜","黃江琴","付娜","Kenny G","李煒","","付娜","",""];
 var htms=["SUNJY1UR2WOTT4U40TX0ZXV2RR121Q021W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q020W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q022W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q023W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q024W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q025W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q026W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q027W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q028W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q029W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q030W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q031W0.html","SUNJY1UR2WOTT4U40TX0ZXV2RR121Q032W0.html","",""];
