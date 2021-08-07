@@ -33,10 +33,10 @@ audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;r
 inits();
 rndsg();
 callme();
-bjsunrise=document.getElementById("bjsunrise");
-bjsunset=document.getElementById("bjsunset");
-lysunrise=document.getElementById("lysunrise");
-lysunset=document.getElementById("lysunset");
+//bjsunrise=document.getElementById("bjsunrise");
+//bjsunset=document.getElementById("bjsunset");
+//lysunrise=document.getElementById("lysunrise");
+//lysunset=document.getElementById("lysunset");
 mlocal();
 
 }
@@ -154,11 +154,13 @@ mcells=document.createElement("td");
 mcells.innerText="";
 mcells.setAttribute("id","bjsunrise");
 mrows.appendChild(mcells);
+bjsunrise=mcells;
 
 mcells=document.createElement("td");
 mcells.innerText="";
 mcells.setAttribute("id","bjsunset");
 mrows.appendChild(mcells);
+bjsunset=mcells;
 
 mrows=document.createElement("tr");
 mtbsun.appendChild(mrows);
@@ -170,11 +172,13 @@ mcells=document.createElement("td");
 mcells.innerText="";
 mcells.setAttribute("id","lysunrise");
 mrows.appendChild(mcells);
+lysunrise=mcells;
 
 mcells=document.createElement("td");
 mcells.innerText="";
 mcells.setAttribute("id","lysunset");
 mrows.appendChild(mcells);
+lysunset=mcells;
 
 mrows=document.createElement("tr");
 mtbsun.appendChild(mrows);
