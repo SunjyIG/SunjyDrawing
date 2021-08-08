@@ -2,12 +2,12 @@ var mtb;
 var mrows;
 var mcells;
 var mtab;
-var inbn="<img src='mOthers/02/005.gif' onclick='mclk()'/>";
+var inbn="<img src='../../mOthers/02/005.gif' onclick='mclk()'/>";
 var audio;
 var audios='<audio id="audio" controls="controls" style="margin-left:auto;margin-right:auto;opacity:1;display:none" preload="auto" autoplay="autoplay" volume="100%" /><source src="" type="audio/mpeg">your browser does not support html5 audio.</audio>';
 var video;
 var videos='<video id="audio" controls="controls" style="margin-left:auto;margin-right:auto;opacity:1;" preload="auto" autoplay="autoplay" volume="100%" width="640" height="410"/><source src="">your browser does not support html5 video.</video>';
-var mroot="mOthers/02/";
+var mroot="../../mOthers/02/";
 var mnxt=0;
 var mcur=0;
 var murl="";
@@ -31,7 +31,7 @@ var mpglast=0;
 var mimage=new Image();
 
 window.onload=function(){
-mimage.src="mImages/mCommon/mbn.png";
+mimage.src="../../mImages/mCommon/mbn.png";
 mtb=document.getElementById("mtaby");
 mtab=document.getElementById("mtab");
 mtbsun=document.getElementById("mtabysun");
@@ -235,10 +235,18 @@ lysunset=mcells;
 mrows=document.createElement("tr");
 mtbsun.appendChild(mrows);
 mcells=document.createElement("td");
-mcells.innerHTML="<a href='javascript:void(0)' style=text-decoration:none;'/>my website access</a>";
+//mcells.innerHTML="<a href='javascript:void(0)' style=text-decoration:none;'/>my website access</a>";
 mrows.appendChild(mcells);
-mrows.onclick=function alnks(){location.href="pIndex.html";}; //javascript:void(0)
-mcells.colSpan=3;
+//mrows.onclick=function alnks(){location.href="pIndex.html";}; //javascript:void(0)
+//mcells.colSpan=3;
+
+mcells=document.createElement("td");
+mcells.innerText="";
+mrows.appendChild(mcells);
+
+mcells=document.createElement("td");
+mcells.innerText="";
+mrows.appendChild(mcells);
 
 }catch(ex){}
 
