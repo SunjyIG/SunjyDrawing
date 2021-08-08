@@ -28,7 +28,7 @@ audio=document.getElementById("saudio");
 audio.innerHTML=audios;
 audio=document.getElementById("audio")
 audio.addEventListener("ended", function(){clsg();rndsg();},false);
-audio.addEventListener("play", function(){try{bjsunrise=document.getElementById("bjsunrise");bjsunset=document.getElementById("bjsunset");lysunrise=document.getElementById("lysunrise");lysunset=document.getElementById("lysunset");mtotal=audio.duration;mcurrenttime=0;rfrh();mlocal();}catch(ex){}},false);
+audio.addEventListener("play", function(){try{mtotal=audio.duration;mcurrenttime=0;rfrh();mlocal();}catch(ex){}},false);
 audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;rfrh();mlocal();},false);
 inits();
 rndsg();
