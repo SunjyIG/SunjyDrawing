@@ -126,6 +126,7 @@ mcells.setAttribute("types",types[i]);
 mcells.setAttribute("artists",artists[i]);
 mcells.setAttribute("mrow",i);
 mcells.onclick=function(){getColumnDetail(this)}; 
+mcells.style.textAlign="left";
 mrows.appendChild(mcells);
 
 mcells=document.createElement("td");
