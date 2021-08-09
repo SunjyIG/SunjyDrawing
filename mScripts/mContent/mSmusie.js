@@ -19,7 +19,7 @@ var bjsunrise;
 var bjsunset;
 var lysunrise;
 var lysunset;
-var mpgbarhtml="<canvas id='loadingProgressCanvas' width='5' height='5'></canvas>";
+var mpgbarhtml="<canvas id='loadingProgressCanvas' width='5' height='5' onclick='mclk()'></canvas>";
 var mpgbar;
 var mpgbarwidth=0;
 var mpgbarheight=0; 
@@ -134,6 +134,7 @@ ctx.rect(0, 0, mpgbarwidth, mpgbarheight);
 ctx.stroke();
 ctx.fillStyle="green"; 
 ctx.clearRect(0, 0, mpgbarwidth, mpgbarheight);
+ctx.globalAlpha=1; //Turn transparency on 0--1
 }catch(ex){}
 }
 

@@ -19,7 +19,7 @@ var bjsunrise;
 var bjsunset;
 var lysunrise;
 var lysunset;
-var mpgbarhtml="<canvas id='loadingProgressCanvas' width='5' height='5'></canvas>";
+var mpgbarhtml="<canvas id='loadingProgressCanvas' width='5' height='5' onclick='mclk()'></canvas>";
 var mpgbar;
 var mpgbarwidth=0;
 var mpgbarheight=0; 
@@ -29,6 +29,8 @@ var ctx;
 var mpgprogress=0;
 var mpglast=0;
 var mimage=new Image();
+var mtimers=1;
+var mfactor=0;
 
 window.onload=function(){
 mimage.src="mImages/mCommon/mbn.png";
@@ -117,7 +119,13 @@ drawFirst();
 }catch(ex){}
 }
 
+function changeAlpha() {    
+mfactor+=mtimers/50;    
+ctx.globalAlpha=(Math.sin(mfactor)+ 1)/2;
+}  
+
 function drawProgress(){
+//changeAlpha();
 mpgprogress=(mcurrenttime*mpgbarrate);
 ctx.moveTo(mpglast, 0);
 //ctx.fillRect(mpglast, 0, mpgprogress-mpglast, mpgbarheight); 
@@ -134,6 +142,8 @@ ctx.rect(0, 0, mpgbarwidth, mpgbarheight);
 ctx.stroke();
 ctx.fillStyle="green"; 
 ctx.clearRect(0, 0, mpgbarwidth, mpgbarheight);
+ctx.globalAlpha=1; //Turn transparency on
+ctx.fillStyle="green";
 }catch(ex){}
 }
 
