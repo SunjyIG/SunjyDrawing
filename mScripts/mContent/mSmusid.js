@@ -43,7 +43,7 @@ audio.innerHTML=audios;
 audio=document.getElementById("audio")
 audio.addEventListener("ended", function(){clsg();rndsg();},false);
 audio.addEventListener("play", function(){try{mtotal=audio.duration;mcurrenttime=0;mtotala=mtotal;mpgbarrate=(mpgbarwidth/mtotala);mpglast=0;mpgprogress=0;rfrh();mlocal();drawFirst();}catch(ex){}},false);
-audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;rfrh();mlocal();drawProgress();},false);
+audio.addEventListener("timeupdate", function(){try{mcurrenttime=audio.currentTime;rfrh();mlocal();drawProgress();}catch(ex){}},false);
 inits();
 mpgbarwidth=mtab.rows[0].cells[5].clientWidth*0.95; //50; //mtab.rows[0].cells[5].width;
 mpgbarheight=mtab.rows[0].cells[5].clientHeight*0.95; //20; //mtab.rows[0].cells[5].height;
@@ -125,6 +125,7 @@ ctx.globalAlpha=(Math.sin(mfactor)+ 1)/2;
 }  
 
 function drawProgress(){
+try{
 //changeAlpha();
 mpgprogress=(mcurrenttime*mpgbarrate);
 ctx.moveTo(mpglast, 0);
@@ -132,6 +133,7 @@ ctx.moveTo(mpglast, 0);
 mpglast=mpgprogress; 
 ctx.clearRect(0, 0, mpgbarwidth, mpgbarheight);
 ctx.drawImage(mimage,mpgprogress,5,mpgbarheight*0.8,mpgbarheight*0.8);
+}catch(ex){}
 }
 
 function drawFirst(){
