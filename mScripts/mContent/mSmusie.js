@@ -124,6 +124,22 @@ ctx.moveTo(mpglast, 0);
 mpglast=mpgprogress; 
 ctx.clearRect(0, 0, mpgbarwidth, mpgbarheight);
 ctx.drawImage(mimage,mpgprogress,5,mpgbarheight*0.8,mpgbarheight*0.8);
+
+ctx.font="12px Verdana";
+var gradient=ctx.createLinearGradient(0,0,mpgbarwidth,0);
+gradient.addColorStop("0",rndRGBColor());
+gradient.addColorStop("0.5",rndRGBColor());
+gradient.addColorStop("1.0",rndRGBColor());
+ctx.fillStyle=gradient;
+if ((mcurrenttime/mtotal)<=0.5){ctx.fillStyle="green";}else{ctx.fillStyle=hexify("rgb(255,0,0,"+((mtotal-mcurrenttime/5)/mtotal)+")");}
+//ctx.fillText(getTimes(mcurrenttime),mpgbarwidth/4,mpgbarheight*0.7);
+//ctx.fillText(((mcurrenttime*100/mtotal).toFixed(0) + "%"),mpgbarwidth/4,mpgbarheight*0.7);
+if (mpgprogress<=mpgbarwidth/3){
+ctx.fillText(((mcurrenttime*100/mtotal).toFixed(0) + "%"),mpgprogress+mpgbarheight*0.8,mpgbarheight*0.7);
+}else{
+ctx.fillText(((mcurrenttime*100/mtotal).toFixed(0) + "%"),mpgprogress-mpgbarheight*1.1,mpgbarheight*0.7);
+}
+
 }
 
 function drawFirst(){
@@ -137,6 +153,40 @@ ctx.clearRect(0, 0, mpgbarwidth, mpgbarheight);
 ctx.globalAlpha=1; //Turn transparency on 0--1
 }catch(ex){}
 }
+
+function rndRGBColor(){
+var r = Math.floor(Math.random() * 256); 
+var g = Math.floor(Math.random() * 256); 
+var b = Math.floor(Math.random() * 256); 
+return "rgb(" + r + ',' + g + ',' + b + ")";
+}
+
+function hexToRgba(hex, opacity){ 
+return "rgba(" + parseInt("0x" + hex.slice(1, 3)) + "," + parseInt("0x" + hex.slice(3, 5)) + "," + parseInt("0x" + hex.slice(5, 7)) + "," + opacity + ")"; 
+}
+　
+function rgbToHex(r, g, b) {
+return ((r << 16) | (g << 8) | b).toString(16); 
+} 
+
+function hexify(color) {
+  var values = color
+    .replace(/rgba?\(/, '')
+    .replace(/\)/, '')
+    .replace(/[\s+]/g, '')
+    .split(',');
+  var a = parseFloat(values[3] || 1),
+      r = Math.floor(a * parseInt(values[0]) + (1 - a) * 255),
+      g = Math.floor(a * parseInt(values[1]) + (1 - a) * 255),
+      b = Math.floor(a * parseInt(values[2]) + (1 - a) * 255);
+  return "#" +
+    ("0" + r.toString(16)).slice(-2) +
+    ("0" + g.toString(16)).slice(-2) +
+    ("0" + b.toString(16)).slice(-2);
+}
+
+//var myHex = hexify('rgba(255,232,186,0.4)'); 
+//alert(hexify('rgba(255,232,186,0.4)'));
 
 function mclk(){if (audio.paused==true){audio.play();}else{audio.pause();};}
 
