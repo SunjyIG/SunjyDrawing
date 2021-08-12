@@ -62,7 +62,7 @@ mcur=rr;
 }
 
 function mclk(){if (audio.paused==true){audio.play();}else{audio.pause();};}
-function dclk(){try{if (audio.paused==true){audio.play();}else{};}catch(e){}}
+function dclk(){try{if (audio.paused==true){audio.play();}else{audio.pause();};}catch(e){}}
 
 function callme(){
 //alert(songs.length);
