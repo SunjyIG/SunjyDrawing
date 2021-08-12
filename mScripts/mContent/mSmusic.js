@@ -13,7 +13,9 @@ var mcur=0;
 var murl="";
 var mtotal=0;
 var mcurrenttime=0;
+var imgrotate;
 window.onload=function(){
+imgrotate=document.getElementById("imgrotate");
 mtb=document.getElementById("mtaby");
 mtab=document.getElementById("mtab");
 audio=document.getElementById("saudio");
@@ -60,6 +62,7 @@ mcur=rr;
 }
 
 function mclk(){if (audio.paused==true){audio.play();}else{audio.pause();};}
+function dclk() {try{if (audio.paused==true){audio.play();}else{audio.pause();};}catch(e){}}
 
 function callme(){
 //alert(songs.length);

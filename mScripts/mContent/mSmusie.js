@@ -29,8 +29,9 @@ var ctx;
 var mpgprogress=0;
 var mpglast=0;
 var mimage=new Image();
-
+var imgrotate;
 window.onload=function(){
+imgrotate=document.getElementById("imgrotate");
 mimage.src="../../mImages/mCommon/mbn.png";
 mtb=document.getElementById("mtaby");
 mtab=document.getElementById("mtab");
@@ -189,6 +190,7 @@ function hexify(color) {
 //alert(hexify('rgba(255,232,186,0.4)'));
 
 function mclk(){if (audio.paused==true){audio.play();}else{audio.pause();};}
+function dclk() {try{if (audio.paused==true){audio.play();}else{audio.pause();};}catch(e){}}
 
 function callme(){
 //alert(songs.length);
