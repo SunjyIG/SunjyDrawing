@@ -38,6 +38,8 @@ letter-spacing:0.3em;
 	animation:run 10s linear 0s infinite; 
 	/* animation:run 10s infinite; */
 }     
+
+.mrotates{} 
      
 .mrotate:hover{     
 	animation-play-state:paused;     
@@ -46,6 +48,7 @@ letter-spacing:0.3em;
 .mrotates{animation-timing-function:cubic-bezier(0.25,0.1,0.25,1);}
 
    
+
 @keyframes run{     
 	from{     
 		transform:rotate(0deg);     
@@ -54,3 +57,5 @@ letter-spacing:0.3em;
 		transform:rotate(360deg);    
 	}     
 }
+
+@keyframes runa{}
