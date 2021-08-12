@@ -23,7 +23,7 @@ audio.innerHTML=audios;
 audio=document.getElementById("audio")
 audio.addEventListener("ended", function(){clsg();rndsg();},false);
 audio.addEventListener("play", function(){mtotal=audio.duration;mcurrenttime=0;rfrh();},false);
-audio.addEventListener("timeupdate", function(){mcurrenttime=audio.currentTime;rfrh();},false);
+audio.addEventListener("timeupdate", function(){mtotal=audio.duration;mcurrenttime=audio.currentTime;rfrh();},false);
 inits();
 rndsg();
 callme();
