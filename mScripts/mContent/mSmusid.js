@@ -33,7 +33,7 @@ var mimage=new Image();
 var imgrotate;
 var mTimerID=null;
 var mm4a="mImages/mCommon/musica.m4a";
-
+var iswaiting=true;
 window.onload=function(){
 mtimerStart("rotateME()",100);
 imgrotate=document.getElementById("imgrotate");
@@ -49,9 +49,10 @@ audio.loop=false;
 //audio.src=mm4a;
 //mplay();
 audio.addEventListener("ended", function(){clsg();rndsg();},false);
+audio.addEventListener("waiting", function(){iswaiting=true;},false);
 //audio.addEventListener("canplay", function(){try{if (audio.paused){audio.paused=false;audio.play();}}catch(ex){}},false);
 audio.addEventListener("play", function(){try{mtotal=audio.duration;mcurrenttime=0;mtotala=mtotal;mpgbarrate=(mpgbarwidth/mtotala);mpglast=0;mpgprogress=0;rfrh();mlocal();drawFirst();}catch(ex){};try{if (audio.paused){audio.paused=false;audio.play();}}catch(ex){}},false);
-audio.addEventListener("timeupdate", function(){try{mtotal=audio.duration;mtotala=mtotal;mpgbarrate=(mpgbarwidth/mtotala);mcurrenttime=audio.currentTime;rfrh();mlocal();drawProgress();}catch(ex){}},false);
+audio.addEventListener("timeupdate", function(){iswaiting=false;try{mtotal=audio.duration;mtotala=mtotal;mpgbarrate=(mpgbarwidth/mtotala);mcurrenttime=audio.currentTime;rfrh();mlocal();drawProgress();}catch(ex){}},false);
 inits();
 mpgbarwidth=mtab.rows[0].cells[5].clientWidth*0.95; //50; //mtab.rows[0].cells[5].width;
 mpgbarheight=mtab.rows[0].cells[5].clientHeight*0.95; //20; //mtab.rows[0].cells[5].height;
@@ -75,6 +76,12 @@ else{
 imgrotate.className="mrotate";
 }
 }catch(ex){}
+if (iswaiting){
+try{
+imgrotate.className="mrotatea";
+}catch(ex){}
+}else{}
+
 }
 
 function mplay(){
