@@ -107,7 +107,7 @@ try{
 var ymd=new Date();
 var mm=ymd.getMonth()+1;if (mm<10){mm="0"+mm;};
 var dd=ymd.getDate();if (dd<10){dd="0"+dd};
-var md=mm+dd;
+var md=mm.toString()+dd.toString();
 for (var i=0;i<sbjmonthday.length;i++){
 if (md==sbjmonthday[i]){
 bjsunrise.innerText=sbjsunrise[i];

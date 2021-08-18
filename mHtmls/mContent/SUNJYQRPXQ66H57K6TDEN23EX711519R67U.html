@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<!--<meta http-equiv=Content-Type content="text/html; charset=gb2312">-->
+<meta charset="UTF-8" />
+<meta name="keywords" content="drawing, painting" />
+<meta name="description" content="drawings by Sunjy" />
+<title>Sunjy</title>
+<link rel="stylesheet" type="text/css" href="../../mCsses/mContent/mCssB.css" />
+<link rel="shortcut icon" type="image/x-icon" href="../../mImages/mCommon/favicon.ico" media="screen" />
+<!--
+<div class="mImgAbsolute"><img src="../../mImages/mCommon/mbm.gif" title="Sunjy" alt="Sunjy" onclick="javascript:location.href='./../../aIndex.html';"/></div>
+<div style="margin-left:auto;margin-right:auto;width:100%;text-align:center;color:red;font-family:arial;font-size:180%;">
+<noscript>Your browser does not support JavaScript!</noscript>
+</div>
+-->
+<style></style>
+</head>
+<body style="padding-top:0px;white-space:pre;" topmargin="0"/>
+
+<div style="margin-left:auto;margin-right:auto;width:80%;"/>
+<input type="date" id="mdatetime" style="padding-top:0px;" topmargin="0"/>
+</div>
+<p></p>
+<div style="margin-left:auto;margin-right:auto;width:80%;text-align:center;color:blue;font-family:arial;font-size:150%">
+<p id="bj">bj</p>
+</div>
+<div style="margin-left:auto;margin-right:auto;width:80%;margin:0 auto;height:70%;margin:0 auto;" height="100px"/>
+<canvas id="bjChart"  height="100" style="height: 100px;"/></canvas>
+</div>
+<p></p>
+<div style="margin-left:auto;margin-right:auto;width:80%;text-align:center;color:blue;font-family:arial;font-size:150%">
+<p id="ly">ly</p>
+</div>
+<p></p>
+<div style="margin-left:auto;margin-right:auto;width:80%;margin:0 auto;height:30%;margin:0 auto;" height="100px"/>
+<canvas id="lyChart"  height="100" style="height: 100px;"/></canvas>
+</div>
+<p></p>
+<script type="text/javascript" src="../../mScripts/mCommon/mChart.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjmonthday.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjsunrised.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjsunsetd.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Slysunrised.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Slysunsetd.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjsunrise.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjsunset.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Slysunrise.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Slysunset.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjdawn.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjdusk.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjdaylight.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Slydawn.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Slydusk.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Slydaylight.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Sbjnoon.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Slynoon.js"></script>
+<script type="text/javascript" src="../../mScripts/mContent/Scharts.js"></script>
+<script>
+
+mcharts('bjChart','Beijing Sunrise',sbjsunrised,'Beijing Sunset',sbjsunsetd,'Beijing Sunrise and Sunset');
+mcharts('lyChart','Luoyang Sunrise',slysunrised,'Luoyang Sunset',slysunsetd,'Luoyang Sunrise and Sunset');
+var oTimer = document.getElementById("mdatetime");
+oTimer.value=ymdformat("ymd");
+changeme(oTimer.value);
+oTimer.addEventListener('change',function(){oTimerchange(this);},false);
+
+</script>
+<div style="margin-left:auto;margin-right:auto;width:80%;text-align:center;color:black;font-family:arial;font-size:120%">
+<p>Powered by SUN</p>
+</div>
+<div class="mImgAbsolute"><img src="../../mImages/mCommon/mbm.gif" title="Sunjy" alt="Sunjy" onclick="javascript:location.href='./../../aIndex.html';"/></div>
+
+</body>
+</html>
