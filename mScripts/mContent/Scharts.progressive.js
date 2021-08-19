@@ -1,14 +1,33 @@
 function mcharts(chrID,mLbla,mDaa,mLblb,mDab,mTxt){
+
+var data1 = [];
+var data2 = [];
+//var prev = 100;
+//var prev2 = 80;
+for (var i = 0; i < mDaa.length; i++) {
+  //prev += 5 - Math.random() * 10;
+  data1.push({x: i, y: mDaa[i]});
+  //prev2 += 5 - Math.random() * 10;
+  data2.push({x: i, y: mDab[i]});
+}
+
+//mDaa.splice(0,mDaa.length);
+//mDab.splice(0,mDab.length); 
+//mDaa=data1;
+//mDab=data2;
+
 var labels=sbjmonthday;
+var delayed;
 var data = {
   labels: labels,
+type: 'line',
   datasets: [{
     borderWidth:1,
-    radius: 1,
-    order: 1,
+
     type: 'line',
     label: mLbla,
-    data: mDaa,
+radius: 0,
+    data: data1,
     fill: false,
     borderColor: function(context) {
         var chart = context.chart;
@@ -30,11 +49,11 @@ var data = {
     tension: 0.1
   },{
     borderWidth:1,
-    radius: 1,
-    order: 2,
+
     type: 'line',
     label: mLblb,
-    data: mDab,
+radius: 0,
+    data: data2,
     fill: false,
     borderColor: 'blue',
 backgroundColor:'blue',
@@ -43,22 +62,14 @@ backgroundColor:'blue',
 
 
 var options={
+	animation,
+
     responsive: true,
 
    interaction: {
       intersect: false,
       mode: 'index',
     },
-
-   animations: {
-      radius: {
-        duration: 400,
-        easing: 'linear',
-        loop: function(context){context.active}
-      }
-    },
-    hoverRadius: 8,
-    hoverBackgroundColor: 'pink',
 
     plugins: {
       title: {
@@ -67,42 +78,16 @@ var options={
       },
 
       tooltip: {
-usePointStyle: true,
         callbacks: {
           footer: footer,
-
-                    label: function(context) {
-                        var label = context.dataset.label || '';
-
-                        if (label) {
-                            label += ': ';
-                        }
-                        if (context.parsed.y !== null) {
-                            label += mgetTimes(context.parsed.y*60*60);
-                        }
-                        return label;
-                    },
-			
-
-                    labelPointStyle: function(context) {
-                        return {pointStyle: 'star',rotation: 0,};
-			},
-	
-                    //title: function(context){return "";},
-
-
-
         }},
 
     },
 
 
-   elements: {
+    //animation,
 
-      point: {
-        pointStyle: function(ctx){var index = ctx.dataIndex;return index % 2 === 0 ? 'circle' : 'rectRot';},
-        hoverRadius: 10,
-      },},
+
 
 
 
@@ -120,27 +105,7 @@ usePointStyle: true,
             lineHeight: 1.2
           },
           padding: {top: 30, left: 0, right: 0, bottom: 0}
-        },
-
-                ticks: {
-                    // Include a dollar sign in the ticks
-                    callback: function(value, index, values) {
-                        return value+" h";
-                    }},
-
-grid: {
-          drawBorder: false,
-          /* color: function(context) {
-            if (context.tick.value > 12) {
-              return "blue";
-            } else if (context.tick.value < 12) {
-              return "green";
-            }
-
-            return '#000000';
-          } */
-	},
-
+        }
       },
 
       x: {
@@ -156,18 +121,7 @@ grid: {
             lineHeight: 1.2,
           },
           padding: {top: 20, left: 0, right: 0, bottom: 0}
-        },
-
-       ticks: {
-          // For a category axis, the val is the index so the lookup via getLabelForValue is needed
-          callback: function(val, index) {
-            // Hide the label of every 2nd dataset
-            return index % 2 === 0 ? this.getLabelForValue(val) : '';
-          },
-          color: 'black',
-          //font: {family: 'arial',size: 15,style: 'bold',},
-        },
-
+        }
       },
 
     }
@@ -177,6 +131,41 @@ grid: {
 var c=document.getElementById(chrID);  
 var ctx = c.getContext('2d');
 try{cxt.clearRect(0,0,c.width,c.height);}catch(ex){};
+
+var totalDuration = 10000;
+var delayBetweenPoints = totalDuration / data1.length;
+var previousY =function(ctx){ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(mDab[0]) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y};
+
+var animation = {
+  x: {
+    //type: 'number',
+    easing: 'linear',
+    duration: delayBetweenPoints,
+    from: NaN, // the point is initially skipped
+    delay(ctx) {
+      if (ctx.type !== 'data' || ctx.xStarted) {
+        return 0;
+      }
+      ctx.xStarted = true;
+      return ctx.index * delayBetweenPoints;
+    }
+  },
+  y: {
+    //type: 'number',
+    easing: 'linear',
+    duration: delayBetweenPoints,
+    from: previousY,
+    delay(ctx) {
+      if (ctx.type !== 'data' || ctx.yStarted) {
+        return 0;
+      }
+      ctx.yStarted = true;
+      return ctx.index * delayBetweenPoints;
+    }
+  }
+};
+
+
 
 var mixedChart = new Chart(ctx, {
     type: 'line',
@@ -210,17 +199,12 @@ function footer(tooltipItems){
 	var mtxt="Sunrise:   ";
 	var i=0;
 	var msum=0;
-	var msx="";
   tooltipItems.forEach(function(tooltipItem){
     msun=tooltipItem.parsed.y*60*60;
-	msx=tooltipItem.parsed.x;
 	if (i==0){mtxt=mtxt+mgetTimes(msun);msum=msun;}else{mtxt=mtxt+ "\n"+"Sunset:    "+mgetTimes(msun);msum=msun-msum;};
 	i++;
   });
-
-  //return mtxt+ "\n"+"Daylight:  "+mgetTimes(msum)+ "\n"+"Powered by ©SUN";
-  return "Daylight:  "+mgetTimes(msum)+ "\n"+"Powered by ©SUN"; // + msx;
-  //return {label: 'Triangles',pointStyle: 'triangle'};
+  return mtxt+ "\n"+"Daylight:  "+mgetTimes(msum);
 };
 
 function mgetTimes(time){

@@ -4,7 +4,6 @@ var data = {
   labels: labels,
   datasets: [{
     borderWidth:1,
-    radius: 1,
     order: 1,
     type: 'line',
     label: mLbla,
@@ -30,7 +29,6 @@ var data = {
     tension: 0.1
   },{
     borderWidth:1,
-    radius: 1,
     order: 2,
     type: 'line',
     label: mLblb,
@@ -50,16 +48,6 @@ var options={
       mode: 'index',
     },
 
-   animations: {
-      radius: {
-        duration: 400,
-        easing: 'linear',
-        loop: function(context){context.active}
-      }
-    },
-    hoverRadius: 8,
-    hoverBackgroundColor: 'pink',
-
     plugins: {
       title: {
         display: true,
@@ -67,42 +55,11 @@ var options={
       },
 
       tooltip: {
-usePointStyle: true,
         callbacks: {
           footer: footer,
-
-                    label: function(context) {
-                        var label = context.dataset.label || '';
-
-                        if (label) {
-                            label += ': ';
-                        }
-                        if (context.parsed.y !== null) {
-                            label += mgetTimes(context.parsed.y*60*60);
-                        }
-                        return label;
-                    },
-			
-
-                    labelPointStyle: function(context) {
-                        return {pointStyle: 'star',rotation: 0,};
-			},
-	
-                    //title: function(context){return "";},
-
-
-
         }},
 
     },
-
-
-   elements: {
-
-      point: {
-        pointStyle: function(ctx){var index = ctx.dataIndex;return index % 2 === 0 ? 'circle' : 'rectRot';},
-        hoverRadius: 10,
-      },},
 
 
 
@@ -120,27 +77,7 @@ usePointStyle: true,
             lineHeight: 1.2
           },
           padding: {top: 30, left: 0, right: 0, bottom: 0}
-        },
-
-                ticks: {
-                    // Include a dollar sign in the ticks
-                    callback: function(value, index, values) {
-                        return value+" h";
-                    }},
-
-grid: {
-          drawBorder: false,
-          /* color: function(context) {
-            if (context.tick.value > 12) {
-              return "blue";
-            } else if (context.tick.value < 12) {
-              return "green";
-            }
-
-            return '#000000';
-          } */
-	},
-
+        }
       },
 
       x: {
@@ -156,18 +93,7 @@ grid: {
             lineHeight: 1.2,
           },
           padding: {top: 20, left: 0, right: 0, bottom: 0}
-        },
-
-       ticks: {
-          // For a category axis, the val is the index so the lookup via getLabelForValue is needed
-          callback: function(val, index) {
-            // Hide the label of every 2nd dataset
-            return index % 2 === 0 ? this.getLabelForValue(val) : '';
-          },
-          color: 'black',
-          //font: {family: 'arial',size: 15,style: 'bold',},
-        },
-
+        }
       },
 
     }
@@ -210,17 +136,12 @@ function footer(tooltipItems){
 	var mtxt="Sunrise:   ";
 	var i=0;
 	var msum=0;
-	var msx="";
   tooltipItems.forEach(function(tooltipItem){
     msun=tooltipItem.parsed.y*60*60;
-	msx=tooltipItem.parsed.x;
 	if (i==0){mtxt=mtxt+mgetTimes(msun);msum=msun;}else{mtxt=mtxt+ "\n"+"Sunset:    "+mgetTimes(msun);msum=msun-msum;};
 	i++;
   });
-
-  //return mtxt+ "\n"+"Daylight:  "+mgetTimes(msum)+ "\n"+"Powered by ©SUN";
-  return "Daylight:  "+mgetTimes(msum)+ "\n"+"Powered by ©SUN"; // + msx;
-  //return {label: 'Triangles',pointStyle: 'triangle'};
+  return mtxt+ "\n"+"Daylight:  "+mgetTimes(msum);
 };
 
 function mgetTimes(time){
