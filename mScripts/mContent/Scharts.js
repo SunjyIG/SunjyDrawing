@@ -55,7 +55,16 @@ var options={
         duration: 400,
         easing: 'linear',
         loop: function(context){context.active}
-      }
+      }, 
+
+      /* tension: {
+        duration: 1000,
+        easing: 'linear',
+        from: 2,
+        to: 0,
+        loop: true
+      }, */
+
     },
     hoverRadius: 8,
     hoverBackgroundColor: 'pink',
@@ -162,7 +171,22 @@ grid: {
           // For a category axis, the val is the index so the lookup via getLabelForValue is needed
           callback: function(val, index) {
             // Hide the label of every 2nd dataset
-            return index % 2 === 0 ? this.getLabelForValue(val) : '';
+	    //return index % 2 === 0 ? this.getLabelForValue(val) : '';
+	    var ss=this.getLabelForValue(val);
+	    var st=ss.toString().substring(0,2)+"-"+ss.toString().substring(2,4);
+	    var st=st.replace("01-","Jan-");
+	    var st=st.replace("02-","Feb-");
+	    var st=st.replace("03-","Mar-");
+	    var st=st.replace("04-","Apr-");
+	    var st=st.replace("05-","May-");
+	    var st=st.replace("06-","Jun-");
+	    var st=st.replace("07-","Jul-");
+	    var st=st.replace("08-","Aug-");
+	    var st=st.replace("09-","Sep-");
+	    var st=st.replace("10-","Oct-");
+	    var st=st.replace("11-","Nov-");
+	    var st=st.replace("12-","Dec-");
+            return index % 2 === 0 ? st: '';
           },
           color: 'black',
           //font: {family: 'arial',size: 15,style: 'bold',},
