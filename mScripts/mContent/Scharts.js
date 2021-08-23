@@ -1,5 +1,6 @@
 var mIndex=0;
-function mcharts(chrID,mLbla,mDaa,mLblb,mDab,mTxt){
+var mcht=[];
+function mcharts(chrID,mLbla,mDaa,mLblb,mDab,mTxt,inx){
 var labels=sbjmonthday;
 var data = {
   labels: labels,
@@ -217,6 +218,7 @@ var mixedChart = new Chart(ctx, {
     data: data,
     options:options,
 });
+mcht[inx]=mixedChart;
 mixedChart.setActiveElements([{datasetIndex: 0, index: mIndex},{datasetIndex: 1, index: mIndex}]);
 var width, height, gradient;
 function getGradient(ctx, chartArea) {
@@ -279,6 +281,18 @@ function mgetTimes(time){
 
 function oTimerchange(s){
 changeme(s.value);
+//changecht(mcht);
+}
+
+function changecht(){
+try{
+mcht[0].setActiveElements([{datasetIndex: 0, index: mIndex},{datasetIndex: 1, index: mIndex}]);
+mcht[0].update();
+mcht[1].setActiveElements([{datasetIndex: 0, index: mIndex},{datasetIndex: 1, index: mIndex}]);
+mcht[1].update();
+}catch(e){
+//alert(e);
+};
 }
 
 function changeme(v){
@@ -286,6 +300,7 @@ var md=dayformat(v,"mdn");
 for (r=0;r<sbjmonthday.length;r++){
 if (sbjmonthday[r]==md){
 mIndex=r;
+changecht();
 document.getElementById("bj").innerText= v+" Beijing, Dawn: "+sbjdawn[r]+",  Sunrise: "+sbjsunrise[r]+",  Noon: "+sbjnoon[r]+",  Sunset: "+sbjsunset[r]+",  Dusk: "+sbjdusk[r]+",  Daylight: "+sbjdaylight[r];
 document.getElementById("ly").innerText= v+" Luoyang, Dawn: "+slydawn[r]+",  Sunrise: "+slysunrise[r]+",  Noon: "+slynoon[r]+",  Sunset: "+slysunset[r]+",  Dusk: "+slydusk[r]+",  Daylight: "+slydaylight[r];
 break;
