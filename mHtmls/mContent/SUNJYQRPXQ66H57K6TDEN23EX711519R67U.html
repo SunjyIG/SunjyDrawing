@@ -58,12 +58,13 @@
 <script type="text/javascript" src="../../mScripts/mContent/Scharts.js"></script>
 <script>
 
-mcharts('bjChart','Beijing Sunrise',sbjsunrised,'Beijing Sunset',sbjsunsetd,'Beijing Sunrise and Sunset');
-mcharts('lyChart','Luoyang Sunrise',slysunrised,'Luoyang Sunset',slysunsetd,'Luoyang Sunrise and Sunset');
 var oTimer = document.getElementById("mdatetime");
 oTimer.value=ymdformat("ymd");
 changeme(oTimer.value);
 oTimer.addEventListener('change',function(){oTimerchange(this);},false);
+
+mcharts('bjChart','Beijing Sunrise',sbjsunrised,'Beijing Sunset',sbjsunsetd,'Beijing Sunrise and Sunset');
+mcharts('lyChart','Luoyang Sunrise',slysunrised,'Luoyang Sunset',slysunsetd,'Luoyang Sunrise and Sunset');
 
 </script>
 <div style="margin-left:auto;margin-right:auto;width:80%;text-align:center;color:black;font-family:arial;font-size:120%">
