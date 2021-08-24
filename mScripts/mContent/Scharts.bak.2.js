@@ -1,7 +1,5 @@
 var mIndex=0;
 var mcht=[];
-var mimage=new Image();
-mimage.src="../../mImages/mCommon/mbn.png";
 function mcharts(chrID,mLbla,mDaa,mLblb,mDab,mTxt,inx){
 var labels=sbjmonthday;
 var data = {
@@ -74,15 +72,10 @@ var options={
     hoverBackgroundColor: 'pink',
 
     plugins: {
-
-
       title: {
         display: true,
         text: mTxt,
       },
-	
-//afterDatasetsDraw:mfills(inx,chart),
-//afterDraw:mfills(inx,mixedChart),
 
       tooltip: {
 usePointStyle: true,
@@ -235,7 +228,6 @@ var mixedChart = new Chart(ctx, {
     options:options,
 });
 mcht[inx]=mixedChart;
-//mfills(inx,mixedChart);
 mixedChart.setActiveElements([{datasetIndex: 0, index: mIndex},{datasetIndex: 1, index: mIndex}]);
 var width, height, gradient;
 function getGradient(ctx, chartArea) {
@@ -264,112 +256,17 @@ function footer(tooltipItems){
 	var i=0;
 	var msum=0;
 	var msx="";
-	var xx=0;
-	var yy=0;
-	var xy=0;
   tooltipItems.forEach(function(tooltipItem){
-	xy=tooltipItem.parsed.y;
-	msun=xy*60*60;
+    msun=tooltipItem.parsed.y*60*60;
 	msx=tooltipItem.parsed.x;
-	if (i==0){mtxt=mtxt+mgetTimes(msun);msum=msun;xx=xy;}else{mtxt=mtxt+ "\n"+"Sunset:    "+mgetTimes(msun);msum=msun-msum;yy=xy;};
+	if (i==0){mtxt=mtxt+mgetTimes(msun);msum=msun;}else{mtxt=mtxt+ "\n"+"Sunset:    "+mgetTimes(msun);msum=msun-msum;};
 	i++;
   });
-	for(var ii=0;ii<sbjsunrised.length;ii++){
-		if (((xx==sbjsunrised[ii])&&(yy==sbjsunsetd[ii]))&&(ii==msx)){
-			mlines(msx,0);break;
-		}else{
-		if (((xx==slysunrised[ii])&&(yy==slysunsetd[ii]))&&(ii==msx)){
-			mlines(msx,1);break;
-		};};	
-	};
+
   //return mtxt+ "\n"+"Daylight:  "+mgetTimes(msum)+ "\n"+"Powered by ©SUN";
   return "Daylight:  "+mgetTimes(msum)+ "\n"+"Powered by ©SUN"; // + msx;
   //return {label: 'Triangles',pointStyle: 'triangle'};
 };
-
-function mfills(p,c){
-try{
-	var s=0;
-	var e=366;
-	//var xs=c.scales['x'].getPixelForValue(s);
-	//var xe=c.scales['x'].getPixelForValue(e);
-	var x=0;
-	var y1=0;
-	var y2=0;
-	var mctx=c.ctx;
-	mctx.restore();
-	mctx.beginPath();
-	mctx.strokeStyle = 'red';
-	for(var i=s;i<e;i++){
-		x=c.scales['x'].getPixelForValue(i);
-		if (p==0){
-			y1=c.scales['y'].getPixelForValue(sbjsunrised[i]);
-			y2=c.scales['y'].getPixelForValue(sbjsunsetd[i]);
-		};
-		if (p==1){
-			y1=c.scales['y'].getPixelForValue(slysunrised[i]);
-			y2=c.scales['y'].getPixelForValue(slysunsetd[i]);
-		};	
-		mctx.moveTo(x,y1-1);
-		mctx.lineTo(x,y2+1);
-		mctx.stroke();
-		mctx.fill();
-	};
-	mctx.closePath();
-	mctx.save();
-	//mcht[c].destroy();
-}catch(e){alert(e);
-};
-	
-};
-
-function mlines(i,c){
-//return;
-try{
-	var x01;
-	x01=mcht[c].scales['x'].getPixelForValue(i);
-	var y01=0;
-	var y02=0;
-	if (c==0){
-		y01=mcht[c].scales['y'].getPixelForValue(sbjsunrised[i]);
-		y02=mcht[c].scales['y'].getPixelForValue(sbjsunsetd[i]);
-	};
-	if (c==1){
-		y01=mcht[c].scales['y'].getPixelForValue(slysunrised[i]);
-		y02=mcht[c].scales['y'].getPixelForValue(slysunsetd[i]);
-	};	
-	//alert(y01+"|"+y02);
-	/*
-
-	*/
-	var mctx;
-	var gradient;
-	mctx=mcht[c].ctx
-	/*
-	gradient=ctx.createLinearGradient(0,0,c.width,0);
-	gradient.addColorStop("0","yellow");
-	gradient.addColorStop("0.5","orange");
-	gradient.addColorStop("1.0","red");
-	*/
-	mctx.lineWidth = 8;
-	mctx.strokeStyle = "orange";
-	mctx.beginPath();
-	mctx.moveTo(x01,y01-1);
-	mctx.lineTo(x01,y02+1);
-	mctx.stroke();
-	if (c==0){
-		//mctx.fillText("   Beijing Daylight: "+mgetTimes((sbjsunsetd[i]-sbjsunrised[i])*60*60),x01,y01+15);
-	};
-	if (c==1){
-		//mctx.fillText("   Luoyang Daylight: "+mgetTimes((slysunsetd[i]-slysunrised[i])*60*60),x01,y01+15);
-	};
-	mctx.drawImage(mimage,x01,y01+30,15,15);
-	mctx.closePath();
-	mctx.fill();
-}
-catch(e){return e;};
-
-}
 
 function mgetTimes(time){
 	var hour=time/3600;
