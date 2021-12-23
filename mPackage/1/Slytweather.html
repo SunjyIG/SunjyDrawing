@@ -1,0 +1,179 @@
+<meta charset="UTF-8" />
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+<script src="Slytdates.js"></script>
+<script src="Slythtemperature.js"></script>
+<script src="Slytltemperature.js"></script>
+<script src="Slytscripts.js"></script>
+<script src="Slytgap.js"></script>
+<script src="../../mScripts/mCommon/mChart.js"></script>
+<script>
+  // === include 'setup' then 'config' above ===
+/*
+
+const labels = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+];
+
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+  var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+var ctx=document.getElementById('myChart').getContext('2d');
+
+
+
+
+*/
+</script>
+<!----**********start**********----><script>
+//begin script
+const ss=" ℃";
+const st=" ℉";
+
+const labels=slytdates;
+
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: "Low Temperature",
+      data: slytltemperature,
+	type: "line",
+	fill: false,
+	borderWidth:1,
+	order:1,
+      backgroundColor: "orange"
+    },
+    {
+      label: "High Temperature",
+      data: slythtemperature,
+	type: "line",
+	fill: false,
+	borderWidth:1,
+	order:2,
+      backgroundColor: "red",
+	//borderColor:"red",
+    },
+    {
+      label: "Temperature Gap",
+      data: slytgap,
+	type: "bar",
+	fill: false,
+	borderWidth:1,
+	order:3,
+      backgroundColor: "green",
+	borderColor:"green",
+	//hidden: true
+    }
+
+  ]
+};
+
+const config = {
+  type: "line",
+  data: data,
+  options: {
+	
+    responsive: true,
+    hoverRadius: 8,
+    hoverBackgroundColor: "blue",
+
+    interaction: {
+      intersect: false,
+      mode: "index",
+    },
+
+/*   animations: {
+      radius: {
+        duration: 400,
+        easing: 'linear',
+        loop: function(context){context.active}
+      }}, */
+
+    plugins: {
+
+      title: {
+        display: true,
+        text: "Luoyang Weather 2020-2021",
+      },
+
+      tooltip: {
+        callbacks: {
+		title:function(tooltipItems, data) {
+			var x=0;
+  			tooltipItems.forEach(function(tooltipItems) {
+			x=tooltipItems.parsed.x;
+			});
+			var xx=slytdates[x].toString();
+			var xy=xx.slice(0,4).toString();
+			var xm=xx.slice(4,6).toString();
+			var xd=xx.slice(6,8).toString();
+			return "Date: "+xy+"-"+xm+"-"+xd;
+		}, //title-end
+          footer: footer,
+//
+
+                    label: function(context) {
+                        var label = context.dataset.label || "";
+
+                        if (label) {
+                            label += ": ";
+                        }
+                        if (context.parsed.y !== null) {
+                            label += context.parsed.y+ss+"   "+Math.floor(32+context.parsed.y*1.8)+st;
+                        }
+                        return label;
+                    } //label-end
+
+//
+        } //callbacks-end
+      } //tooltip-end
+    }, //plugins-end
+
+    scales: {
+      x: {
+        grid: {
+          tickColor: "red"
+        },
+        ticks: {
+          color: "blue",
+        }
+      }, //x-end
+	y: {
+                ticks: {
+                    callback: function(value, index, values) {
+                        return value+ss;
+                    }},
+	} //y-end
+    } //scales-end
+
+  } //options-end
+
+}; //config-end
+
+function footer(tooltipItems){
+  var x=0;
+  tooltipItems.forEach(function(tooltipItem) {
+    x=tooltipItem.parsed.x;
+  });
+  return "天气:  "+slytscripts[x]+"\n"+"Powered by ©SUN";
+};
+
+//end script
+</script><!----**********end**********----><script>
+  var myChart = new Chart(
+    document.getElementById("myChart"),
+    config
+  );
+</script>
